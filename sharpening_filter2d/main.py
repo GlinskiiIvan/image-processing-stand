@@ -14,6 +14,7 @@ save_path = './processed_images/'
 os.makedirs(os.path.dirname(save_path), exist_ok=True)
 # Шаг 1: Загрузка изображения
 image = cv2.imread('original.png')
+# image = cv2.imread('processed_image-ksize_3.png')
 
 def singe_processed():
     # Create the sharpening kernel 
