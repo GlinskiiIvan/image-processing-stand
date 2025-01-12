@@ -20,7 +20,8 @@ img = cv2.imread('original.png', 0)
 
 # Применение разных значений clipLimit
 range_clipLimit = range(2, 42, 2)
-for i in range_clipLimit:
+def changing_clipLimit():
+    for i in range_clipLimit:
     # Шаг 2: Применение CLAHE для выравнивания гистограммы
     clahe = cv2.createCLAHE(clipLimit=i, tileGridSize=(8, 8))
     equalized_img = clahe.apply(img)
@@ -30,24 +31,28 @@ for i in range_clipLimit:
 
 # Применение разных значений tileGridSize
 range_tileGridSize = range(2, 66, 2)
-for i in range_tileGridSize:
-    # Шаг 2: Применение CLAHE для выравнивания гистограммы
-    clahe = cv2.createCLAHE(clipLimit=2, tileGridSize=(i, i))
-    equalized_img = clahe.apply(img)
-
-    # Шаг 3: Сохранение изображения
-    cv2.imwrite(save_path + f'/02_equalized_image-tileGridSize_{i}x{i}.png', equalized_img)
-
-
-# Применение разных значений clipLimit и tileGridSize
-for i in range_clipLimit:
-    for k in range_tileGridSize:
+def changing_tileGridSize():
+    for i in range_tileGridSize:
         # Шаг 2: Применение CLAHE для выравнивания гистограммы
-        clahe = cv2.createCLAHE(clipLimit=i, tileGridSize=(k, k))
+        clahe = cv2.createCLAHE(clipLimit=2, tileGridSize=(i, i))
         equalized_img = clahe.apply(img)
 
         # Шаг 3: Сохранение изображения
-        cv2.imwrite(save_path + f'/03_equalized_image-clipLimit_{i}-tileGridSize_{k}x{k}.png', equalized_img)
+        cv2.imwrite(save_path + f'/02_equalized_image-tileGridSize_{i}x{i}.png', equalized_img)
+
+
+# Применение разных значений clipLimit и tileGridSize
+def changing_everything():
+    for i in range_clipLimit:
+        for k in range_tileGridSize:
+            # Шаг 2: Применение CLAHE для выравнивания гистограммы
+            clahe = cv2.createCLAHE(clipLimit=i, tileGridSize=(k, k))
+            equalized_img = clahe.apply(img)
+
+            # Шаг 3: Сохранение изображения
+            cv2.imwrite(save_path + f'/03_equalized_image-clipLimit_{i}-tileGridSize_{k}x{k}.png', equalized_img)
+
+changing_everything()
 
 # Конец замера времени
 end_time = time.time()

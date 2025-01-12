@@ -61,8 +61,8 @@ def changing_everything():
             cv2.imwrite(save_path + f'/03_processed_images-brightness_contrast_{brightness}_{contrast}.png', image2)
 
 # singeProcessed()
-changing_brightness()
-changing_contrast()
+# changing_brightness()
+# changing_contrast()
 changing_everything()
 
 # Конец замера времени
