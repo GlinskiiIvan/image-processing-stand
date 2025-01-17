@@ -13,8 +13,8 @@ save_path = './processed_images/'
 # Создание директории, если она не существует
 os.makedirs(os.path.dirname(save_path), exist_ok=True)
 # Шаг 1: Загрузка изображения
-image = cv2.imread('original.png')
-# image = cv2.imread('processed_image-ksize_3.png')
+# image = cv2.imread('original.png')
+image = cv2.imread('taj_bilateral.jpg')
 
 def singe_processed():
     # Create the sharpening kernel 
@@ -56,7 +56,8 @@ def changing_everything():
             #Save the image 
             cv2.imwrite(save_path + f'processed_image-core_neighbor_{core}_{neighbor}.jpg', sharpened_image) 
 
-changing_everything()
+# changing_everything()
+singe_processed()
 
 # Конец замера времени
 end_time = time.time()
